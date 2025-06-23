@@ -1,0 +1,237 @@
+body {
+    background: #222;
+    color: #ffffff;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.header-art {
+    font-size: 76px;
+    color: #fafafa;
+    text-align: center;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    white-space: pre;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    line-height: 0.85;
+    letter-spacing: 2px;
+}
+
+.subhead {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+}
+
+.desc {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+.warn {
+    color: rgb(188, 13, 223);
+    text-align: center;
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+}
+
+.support {
+    border: 1px dotted #fff;
+    background: #222;
+    color: #fff;
+    padding: 10px 0 10px 0;
+    margin: 0 auto 20px auto;
+    max-width: 900px;
+    text-align: center;
+    font-size: 0.95em;
+}
+
+.support a {
+    color: #ffe600;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.search-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-block input[type="text"] {
+    background: #222;
+    color: #ffe600;
+    border: 1px solid #ffe600;
+    font-size: 1.1em;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    padding: 8px 12px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+.search-block button, .screensaver-link {
+    background: none;
+    border: 1px solid #ffe600;
+    color: #ffe600;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    padding: 6px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.search-block button:hover, .screensaver-link:hover {
+    background: #ffe600;
+    color: #222;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background: #ffe600;
+    color: #222;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tag:hover {
+    background: #fff;
+    color: #222;
+}
+
+.file-list {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.file-list a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 8px;
+    word-break: break-all;
+}
+
+.file-list a:hover {
+    color: #ffe600;
+}
+
+.sort-block {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sort-block select, .sort-block button {
+    color: #ffe600;
+    border: 1px solid #ffe600;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    padding: 4px 10px;
+    font-size: 1em;
+    margin-right: 8px;
+}
+
+.sort-block button:hover {
+    background: #ffe600;
+    color: #222;
+}
+
+.header {
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 40px;
+}
+
+.header__marque {
+    animation: marquee 30s linear infinite;
+}
+
+.header__in {
+    display: inline-block;
+    padding-right: 50px;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.narrow {
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav a {
+    color: #0f0;
+    text-decoration: none;
+    font-family: monospace;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #fff;
+}
+
+.key {
+    color: #ff0;
+    font-family: monospace;
+    background: rgba(255, 255, 0, 0.1);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+h1 {
+    color: #0f0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #0f0;
+    margin: 20px 0;
+} 
+
+.terminal-block {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+}

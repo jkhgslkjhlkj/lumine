@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumine — view</title>
+  <link rel="icon" type="image/png" href="image/image.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #ffffffb9;
+      color: #ffffff;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #ffffff;
+    }
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .back-link {
+      display: block;
+      color: #ffe600;
+      text-decoration: underline;
+      margin: 30px auto 10px auto;
+      text-align: center;
+      font-size: 1.1em;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      width: fit-content;
+    }
+    .back-link:hover {
+      color: #fff;
+    }
+    .filename {
+      text-align: center;
+      font-size: 2em;
+      color: #fff;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-weight: bold;
+      word-break: break-all;
+    }
+    .desc, .warn, .filename {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .desc {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 1em;
+    }
+    .warn {
+      color: #fff;
+      text-align: center;
+      font-size: 1em;
+      margin-bottom: 10px;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      font-weight: bold;
+    }
+    .dotted-box, .terminal-block {
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      box-sizing: border-box;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      padding: 24px 32px;
+      text-align: left;
+    }
+    .dotted-box a {
+      color: #000000;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+ 
+    .terminal-block a, .terminal-block b, .terminal-block strong, .terminal-block .yellow {
+      color: #ffffff !important;
+      text-shadow: none !important;
+      font-weight: bold;
+    }
+    .desc, .warn {
+      color: #ffffff !important;
+    }
+    .dotted-box a, a.back-link {
+      color: #ffee00 !important;
+    }
+    .filename, .desc, .warn, .back-link, .dotted-box, .dotted-box a {
+      color: #ffffff;
+    }
+    .dotted-box a.project-link {
+      color: hsl(54, 100%, 50%) !important;
+      text-shadow: 0 2px 8px #000b;
+    }
+    @media (max-width: 900px) {
+      .filename { font-size: 1.2em; }
+      .terminal-block { font-size: 0.92em; }
+    }
+    @media (max-width: 600px) {
+      .terminal-block { font-size: 0.75em; padding: 4px; }
+    }
+    #bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .terminal-block {
+      background: none;
+      color: #ffffff !important;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      padding: 12px 0;
+      margin: 30px auto 30px auto;
+      min-height: 300px;
+      overflow: auto;
+      font-size: 1.15em;
+      white-space: pre-wrap;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      max-width: 900px;
+      box-sizing: border-box;
+    }
+    .support-text {
+      color: #faec2f !important;
+    }
+  </style>
+</head>
+<body>
+  <video id="bg-video" src="image/1.mp4" autoplay loop muted playsinline></video>
+  <div id="bg-overlay"></div>
+  <a class="back-link" href="index.html">Back to main</a>
+  <div class="filename" id="filename"></div>
+  <div class="desc">The following is an automated conversation or scenario based on your text file.<br>No human intervention — only algorithms and chaos.</div>
+  <div class="warn">WARNING — CONTENT MAY BE DISORIENTING — REALITY IS ONLY YOUR CHOICE</div>
+  <div class="terminal-block" id="file-content">Loading...</div>
+  <script>
+    function getFileName() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('file');
+    }
+    function showFileName() {
+      const file = getFileName();
+      document.getElementById('filename').textContent = file ? file : '';
+    }
+    async function loadFile() {
+      const file = getFileName();
+      if (!file) {
+        document.getElementById('file-content').textContent = 'No file specified.';
+        return;
+      }
+      try {
+        const resp = await fetch('texts/' + file);
+        if (!resp.ok) throw new Error('File not found');
+        const text = await resp.text();
+        document.getElementById('file-content').textContent = text;
+      } catch (e) {
+        document.getElementById('file-content').textContent = 'Error loading file.';
+      }
+    }
+    showFileName();
+    loadFile();
+    // Установка фона видео
+    document.getElementById('bg-video').src = 'image/1.mp4';
+  </script>
+</body>
+</html> 
